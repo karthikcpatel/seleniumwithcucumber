@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,7 +17,7 @@ WebDriver driver;
 	
    @Given("^Open login screen$")
    public void open_login_screen() throws Throwable {
-    	System.setProperty("webdriver.chrome.driver", "C:\\eclipse\\drivers\\chromedriver_2.34.exe");
+    	System.setProperty("webdriver.chrome.driver", "C:\\eclipse\\drivers\\chromedriver_83.exe");
     	driver = new ChromeDriver();
     	driver.manage().window().maximize();   
     	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -27,8 +26,10 @@ WebDriver driver;
    
    @Given("^Open google$")
    public void open_google() throws Throwable {
-    	String path1 = System.getProperty("user.dir");
-		System.setProperty("webdriver.chrome.driver",path1+"\\web-driver\\chromedriver_2.34.exe");
+	   	String path = System.getProperty("user.dir");
+		String driverpath = path + "\\drivers\\chromedriver_83.exe";
+		System.setProperty("webdriver.chrome.driver", driverpath);
+		System.setProperty("webdriver.chrome.silentOutput", "true");
     	driver = new ChromeDriver();
     	driver.manage().window().maximize();    
     	driver.get("https://www.google.co.in/");
@@ -71,5 +72,4 @@ WebDriver driver;
 	public void i_should_logout_successfully() throws Throwable {
 		driver.quit();
 	}
-
 }
